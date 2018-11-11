@@ -1,0 +1,19 @@
+variables:
+  USER: calufa
+  REGISTRY: registry.gitlab.com
+  IMAGE: $REGISTRY/plasmicai/ci-runner
+
+stages:
+  - build
+
+build runner image:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login $REGISTRY -u $USER -p $DEPLOY_TOKEN
+    # Build and push docker image
+    - echo $IMAGE
+    - docker build -t $IMAGE .
+    - docker push $IMAGE
