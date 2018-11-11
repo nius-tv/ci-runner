@@ -12,7 +12,7 @@ build runner image:
   services:
     - docker:dind
   script:
-    - docker login $REGISTRY -u $USER -p $DEPLOY_TOKEN
+    - docker login $REGISTRY -u $USER -p $CI_TOKEN
     # Build and push docker image
     - echo $IMAGE
     - docker build -t $IMAGE .
