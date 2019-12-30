@@ -2,6 +2,7 @@ FROM docker:latest
 
 RUN apk add bash
 RUN apk add curl
+RUN apk add jq
 RUN apk add python
 
 # Install Google Cloud SDK
